@@ -40,9 +40,9 @@ const ProductDetail = () => {
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20 sm:pt-24">
+    <div className="h-[100dvh] sm:h-auto sm:min-h-screen bg-gray-50 flex flex-col sm:block overflow-hidden sm:overflow-auto pt-14 sm:pt-24">
       {/* Back link */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+      <div className="shrink-0 max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-2 sm:py-6">
         <Link
           to="/shop"
           className="inline-flex items-center gap-2 text-gray-500 hover:text-gray-900 font-medium text-sm transition-colors"
@@ -52,67 +52,57 @@ const ProductDetail = () => {
         </Link>
       </div>
 
-      {/* Product Content */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 lg:gap-16 items-start">
+      {/* ── MOBILE: flex column, everything in one screen ── */}
+      {/* ── DESKTOP: normal grid layout ── */}
+      <div className="flex-1 flex flex-col sm:flex-none max-w-6xl mx-auto w-full sm:px-6 lg:px-8 sm:pb-24 min-h-0">
+        <div className="flex-1 flex flex-col sm:grid sm:grid-cols-2 lg:gap-16 sm:gap-10 min-h-0">
 
-          {/* Image */}
-          <div className="relative w-full aspect-[3/4] sm:aspect-[4/5] rounded-2xl sm:rounded-3xl overflow-hidden bg-gray-100 shadow-lg">
+          {/* Image — fills remaining space on mobile, normal on desktop */}
+          <div className="flex-1 relative overflow-hidden sm:rounded-3xl bg-gray-100 sm:shadow-lg sm:aspect-[4/5] sm:flex-none min-h-0">
             <img
               src={product.image}
               alt={product.name}
-              className="w-full h-full object-cover object-center"
+              className="absolute inset-0 w-full h-full object-cover object-center"
             />
+            {/* Gradient fade into info section on mobile */}
+            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-50 to-transparent sm:hidden" />
           </div>
 
-          {/* Info + WhatsApp CTA */}
-          <div className="flex flex-col items-start py-2 sm:py-8 lg:sticky lg:top-28">
+          {/* Info + CTA Buttons — pinned at bottom on mobile */}
+          <div className="shrink-0 flex flex-col items-start px-5 sm:px-0 pt-3 pb-4 sm:py-8 lg:sticky lg:top-28">
             {/* Category */}
-            <span className="text-orange-600 font-semibold tracking-wider uppercase text-xs sm:text-sm mb-2 sm:mb-3">
+            <span className="text-orange-600 font-semibold tracking-wider uppercase text-[11px] sm:text-sm mb-0.5 sm:mb-3">
               {product.category}
             </span>
 
             {/* Name */}
-            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
+            <h1 className="text-lg sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
               {product.name}
             </h1>
 
-            {/* Price */}
-            {/* <p className="mt-3 sm:mt-4 text-xl sm:text-2xl font-bold text-gray-900">
-              ${product.price.toFixed(2)}
-            </p> */}
-
-            {/* Divider */}
-            <div className="w-full h-px bg-gray-200 my-6 sm:my-8" />
-
-            {/* WhatsApp Buy Button */}
-            <div className="flex items-center justify-center gap-5">
+            {/* Action Buttons — stacked on mobile, side-by-side on sm+ */}
+            <div className="w-full flex flex-row sm:flex-row gap-2.5 sm:gap-4 mt-3 sm:mt-8">
               <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              id="product-whatsapp-buy"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 sm:py-5 rounded-full bg-[#25D366] text-white font-bold text-base sm:text-lg shadow-lg shadow-green-500/30 hover:shadow-green-500/50 hover:scale-105 active:scale-95 transition-all duration-300"
-            >
-              <FaWhatsapp className="w-6 h-6" />
-              Buy on WhatsApp
-            </a>
-            <Link to={`tel:${WHATSAPP_NUMBER}`}><button className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 sm:py-5 rounded-full bg-[#25D366] text-white font-bold text-base sm:text-lg shadow-lg shadow-green-500/30 hover:shadow-green-500/50 hover:scale-105 active:scale-95 transition-all duration-300">Call Now</button></Link>
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                id="product-whatsapp-buy"
+                className="flex-1 inline-flex items-center justify-center gap-2 sm:gap-3 px-4 py-3 sm:px-8 sm:py-5 rounded-full bg-[#25D366] text-white font-bold text-xs sm:text-lg shadow-lg shadow-green-500/30 hover:shadow-green-500/50 hover:scale-105 active:scale-95 transition-all duration-300"
+              >
+                <FaWhatsapp className="w-4 h-4 sm:w-6 sm:h-6" />
+                WhatsApp
+              </a>
+              <a
+                href={`tel:${WHATSAPP_NUMBER}`}
+                id="product-call-now"
+                className="flex-1 inline-flex items-center justify-center gap-2 sm:gap-3 px-4 py-3 sm:px-8 sm:py-5 rounded-full bg-gray-900 text-white font-bold text-xs sm:text-lg shadow-lg hover:bg-gray-800 hover:scale-105 active:scale-95 transition-all duration-300"
+              >
+                📞 Call Now
+              </a>
             </div>
-
-            <p className="mt-4 text-xs sm:text-sm text-gray-400">
-              Tap the button to chat with us and place your order instantly.
-            </p>
           </div>
         </div>
       </div>
-
-      <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}} />
     </div>
   );
 };
