@@ -137,7 +137,12 @@ const Header = () => {
                 </span>
                 <ArrowRight className="w-6 h-6 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-pink-500" />
               </Link>
+            
             ))}
+            <Link to={'/contact'}
+            onClick={() => setIsOpen(false)}>
+              <button className='text-3xl font-black tracking-tight text-gray-900 py-2 border-b border-gray-100/50 transition-all duration-300 uppercase'>Contact</button>
+            </Link>
           </nav>
           
           <div 

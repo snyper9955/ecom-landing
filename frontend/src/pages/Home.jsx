@@ -78,9 +78,10 @@ const Home = () => {
           {/* Product Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8">
             {mockProducts.map((product) => (
-              <div
+              <Link
+                to={`/product/${product.id}`}
                 key={product.id}
-                className="group relative"
+                className="group relative block"
                 onMouseEnter={() => setHoveredProduct(product.id)}
                 onMouseLeave={() => setHoveredProduct(null)}
               >
@@ -93,7 +94,7 @@ const Home = () => {
 
                   {/* Hover Actions Overlay */}
                   <div
-                    className={`absolute inset-0 bg-black/20 flex items-end p-4 transition-opacity duration-300 z-10 ${
+                    className={`absolute inset-0 bg-black/20 flex items-end p-4 transition-opacity duration-300 pointer-events-none ${
                       hoveredProduct === product.id
                         ? "opacity-100"
                         : "opacity-0"
@@ -104,18 +105,11 @@ const Home = () => {
                 <div className="mt-2.5 sm:mt-5 flex justify-between items-start px-0.5 sm:px-1">
                   <div className="min-w-0">
                     <h3 className="text-xs sm:text-base lg:text-lg font-bold text-gray-900 group-hover:text-orange-600 transition-colors truncate">
-                      <Link to={`/product/${product.id}`}>
-                        {/* Interactive invisible layer for link */}
-                        <span
-                          aria-hidden="true"
-                          className="absolute inset-0 z-0"
-                        />
-                        {product.name}
-                      </Link>
+                      {product.name}
                     </h3>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

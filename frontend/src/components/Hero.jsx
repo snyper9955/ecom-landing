@@ -13,7 +13,7 @@ const Hero = () => {
           
           <main className="mt-6 mx-auto max-w-7xl sm:mt-12 md:mt-16 lg:mt-20 xl:mt-28">
             <div className="text-center lg:text-left">
-              <div className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-green-100 text-green-800 border border-green-600 font-semibold text-xs sm:text-sm mb-4 sm:mb-6 animate-fade-in-up">
+              <div className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-green-100 text-green-800 border border-green-600 font-bold text-md  sm:text-sm mb-4 sm:mb-6 animate-fade-in-up">
                 <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2"></span>
                 New Summer Collection 2026
               </div>
