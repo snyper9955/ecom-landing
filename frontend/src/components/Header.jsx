@@ -30,7 +30,6 @@ const Header = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Shop', path: '/shop' },
-    { name: 'Contact', path: '/contact' },
   ];
 
   return (
@@ -77,30 +76,17 @@ const Header = () => {
                   ></span>
                 </Link>
               ))}
+              
             </nav>
+             <div className="hidden md:flex items-center space-x-6">
+              <Link to={'/contact'}>
+                <button className='text-sm font-semibold tracking-wide hover:text-red-500 transition-all duration-300 uppercase'>Contact</button>
+              </Link>
+              
+            </div>
 
             {/* Action Icons */}
-            <div className="hidden md:flex items-center space-x-6">
-              <button className="text-gray-700 hover:text-orange-500 hover:scale-110 transition-all duration-300">
-                <Search className="w-5 h-5" />
-              </button>
-              <button className="text-gray-700 hover:text-orange-500 hover:scale-110 transition-all duration-300">
-                <User className="w-5 h-5" />
-              </button>
-              <button className="text-gray-700 hover:text-orange-500 hover:scale-110 transition-all duration-300 relative group">
-                <Heart className="w-5 h-5" />
-                <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-pink-500"></span>
-                </span>
-              </button>
-              <Link to="/shop" className="text-gray-700 hover:text-orange-500 hover:scale-110 transition-all duration-300 relative group">
-                <ShoppingCart className="w-5 h-5" />
-                <span className="absolute -top-2 -right-2.5 inline-flex items-center justify-center w-5 h-5 text-[10px] font-bold text-white bg-gradient-to-r from-orange-500 to-pink-500 rounded-full border-2 border-white shadow-sm">
-                  3
-                </span>
-              </Link>
-            </div>
+           
 
             {/* Mobile Menu Button */}
             <button
@@ -159,24 +145,7 @@ const Header = () => {
               isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
           >
-            <div className="flex items-center justify-between bg-gray-50 rounded-2xl p-4 border border-gray-100">
-              <button className="flex flex-col items-center gap-1 text-gray-600 hover:text-orange-500 transition-colors">
-                <User className="w-6 h-6" />
-                <span className="text-xs font-semibold">Account</span>
-              </button>
-              <button className="flex flex-col items-center gap-1 text-gray-600 hover:text-pink-500 transition-colors relative">
-                <Heart className="w-6 h-6" />
-                <span className="text-xs font-semibold">Saved</span>
-                <span className="absolute top-0 right-1 w-2 h-2 bg-pink-500 rounded-full animate-pulse"></span>
-              </button>
-              <button className="flex flex-col items-center gap-1 text-gray-600 hover:text-orange-500 transition-colors relative">
-                <ShoppingCart className="w-6 h-6" />
-                <span className="text-xs font-semibold">Cart</span>
-                <span className="absolute -top-1.5 -right-1.5 flex items-center justify-center w-4 h-4 text-[9px] font-bold text-white bg-gray-900 rounded-full">
-                  3
-                </span>
-              </button>
-            </div>
+            
             
             <div className="text-center mt-4">
               <p className="text-xs text-gray-400 uppercase tracking-widest font-semibold">NovaCart © 2026</p>
