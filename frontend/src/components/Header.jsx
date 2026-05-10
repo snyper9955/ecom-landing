@@ -49,8 +49,8 @@ const Header = () => {
               className="flex-shrink-0 flex items-center cursor-pointer group relative z-50"
               onClick={() => setIsOpen(false)}
             >
-              <span className="text-2xl font-black tracking-tighter text-gray-900 group-hover:scale-105 transition-transform duration-300">
-                NOVA<span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500">CART</span>
+              <span className="text-2xl md:text-2xl font-black tracking-tighter text-gray-900 group-hover:scale-105 transition-transform duration-300" style={{ fontWeight: 900, WebkitTextStroke: '0.5px currentColor' }}>
+                NOVA<span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500" style={{ fontWeight: 900, WebkitTextStroke: '0.5px' }}>CART</span>
               </span>
             </Link>
 
